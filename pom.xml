@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.sourcepit</groupId>
+	<artifactId>srcpit-parent</artifactId>
+	<version>1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Common Maven parent for projects hosted on sourcepit.org</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
+		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
+		<srcpit.svn.url>http://svn.sourcepit.org</srcpit.svn.url>
+		<srcpit.git.url>http://git.sourcepit.org</srcpit.git.url>
+		<srcpit.jenkins.url>http://jenkins.sourcepit.org</srcpit.jenkins.url>
+		<srcpit.nexus.url>http://nexus.sourcepit.org</srcpit.nexus.url>
+		<srcpit.tomcat.url>http://tomcat.sourcepit.org</srcpit.tomcat.url>
+	</properties>
+
+	<scm>
+		<connection>scm:svn:${srcpit.svn.url}/common/trunk/srcpit-parent</connection>
+	</scm>
+
+	<organization>
+		<name>sourcepit.org</name>
+		<url>https://www.sourcepit.org/</url>
+	</organization>
+
+	<repositories>
+		<repository>
+			<id>srcpit-public</id>
+			<url>${srcpit.nexus.url}/content/groups/public/</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>srcpit-public</id>
+			<url>${srcpit.nexus.url}/content/groups/public/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<distributionManagement>
+		<repository>
+			<id>srcpit-releases</id>
+			<url>${srcpit.nexus.url}/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>srcpit-snapshots</id>
+			<url>${srcpit.nexus.url}/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.5</source>
+						<target>1.5</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<includes>
+							<include>**/*Test.java</include>
+							<include>**/*TestCase.java</include>
+						</includes>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
