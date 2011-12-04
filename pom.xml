@@ -130,16 +130,6 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<configuration>
-						<includes>
-							<include>**/*Test.java</include>
-							<include>**/*TestCase.java</include>
-						</includes>
-					</configuration>
-				</plugin>
-				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
 					<version>1.6</version>
@@ -150,6 +140,10 @@
 					<version>2.9</version>
 					<configuration>
 						<argLine>${sonar.jacoco.args} -Xms64m -Xmx128m</argLine>
+						<includes>
+							<include>**/*Test.java</include>
+							<include>**/*TestCase.java</include>
+						</includes>
 					</configuration>
 				</plugin>
 				<plugin>
