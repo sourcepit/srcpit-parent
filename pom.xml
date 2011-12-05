@@ -28,6 +28,7 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${user.dir}/target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${user.dir}/target/jacoco-its.exec</sonar.jacoco.itReportPath>
+		<sonar.jacoco.args />
 	</properties>
 
 	<scm>
@@ -144,6 +145,9 @@
 							<include>**/*Test.java</include>
 							<include>**/*TestCase.java</include>
 						</includes>
+						<systemPropertyVariables>
+							<javaagent>${sonar.jacoco.args}</javaagent>
+						</systemPropertyVariables>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -151,6 +155,7 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>2.9</version>
 					<configuration>
+						<argLine>-Xms64m -Xmx128m</argLine>
 						<systemPropertyVariables>
 							<javaagent>${sonar.jacoco.itArgs}</javaagent>
 						</systemPropertyVariables>
@@ -180,10 +185,40 @@
 					</executions>
 				</plugin>
 				<plugin>
-					<groupId>org.jacoco</groupId>
-					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.5.4.201111111111</version>
-				</plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.5.4.201111111111</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<append>true</append>
+							<destFile>${sonar.jacoco.reportPath}</destFile>
+							<includes>
+								<value>org.sourcepit.*</value>
+							</includes>
+							<propertyName>sonar.jacoco.args</propertyName>
+						</configuration>
+					</execution>
+					<execution>
+						<id>its</id>
+						<phase>pre-integration-test</phase>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+						<configuration>
+							<append>true</append>
+							<destFile>${sonar.jacoco.itReportPath}</destFile>
+							<includes>
+								<value>org.sourcepit.*</value>
+							</includes>
+							<propertyName>sonar.jacoco.itArgs</propertyName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 				<!--This plugin's configuration is used to store Eclipse m2e settings 
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
@@ -232,40 +267,6 @@
 				<executions>
 					<execution>
 						<id>enforce-srcpit-versions</id>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<append>true</append>
-							<destFile>${sonar.jacoco.reportPath}</destFile>
-							<includes>
-								<value>org.sourcepit.*</value>
-							</includes>
-							<propertyName>sonar.jacoco.args</propertyName>
-						</configuration>
-					</execution>
-					<execution>
-						<id>its</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<append>true</append>
-							<destFile>${sonar.jacoco.itReportPath}</destFile>
-							<includes>
-								<value>org.sourcepit.*</value>
-							</includes>
-							<propertyName>sonar.jacoco.itArgs</propertyName>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
