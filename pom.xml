@@ -15,6 +15,7 @@
 		<java.compiler.targetVersion>1.5</java.compiler.targetVersion>
 		<java.compiler.sourceVersion>1.5</java.compiler.sourceVersion>
 		<maven.version>3.0.3</maven.version>
+		<aspectj.version>1.6.11</aspectj.version>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
 		<srcpit.svn.url>http://svn.sourcepit.org</srcpit.svn.url>
@@ -98,7 +99,7 @@
 			<dependency>
 				<groupId>org.aspectj</groupId>
 				<artifactId>aspectjrt</artifactId>
-				<version>1.6.11</version>
+				<version>${aspectj.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>junit</groupId>
@@ -185,40 +186,40 @@
 					</executions>
 				</plugin>
 				<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.5.4.201111111111</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<append>true</append>
-							<destFile>${sonar.jacoco.reportPath}</destFile>
-							<includes>
-								<value>org.sourcepit.*</value>
-							</includes>
-							<propertyName>sonar.jacoco.args</propertyName>
-						</configuration>
-					</execution>
-					<execution>
-						<id>its</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-						<configuration>
-							<append>true</append>
-							<destFile>${sonar.jacoco.itReportPath}</destFile>
-							<includes>
-								<value>org.sourcepit.*</value>
-							</includes>
-							<propertyName>sonar.jacoco.itArgs</propertyName>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.5.4.201111111111</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<configuration>
+								<append>true</append>
+								<destFile>${sonar.jacoco.reportPath}</destFile>
+								<includes>
+									<value>org.sourcepit.*</value>
+								</includes>
+								<propertyName>sonar.jacoco.args</propertyName>
+							</configuration>
+						</execution>
+						<execution>
+							<id>its</id>
+							<phase>pre-integration-test</phase>
+							<goals>
+								<goal>prepare-agent</goal>
+							</goals>
+							<configuration>
+								<append>true</append>
+								<destFile>${sonar.jacoco.itReportPath}</destFile>
+								<includes>
+									<value>org.sourcepit.*</value>
+								</includes>
+								<propertyName>sonar.jacoco.itArgs</propertyName>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 				<!--This plugin's configuration is used to store Eclipse m2e settings 
 					only. It has no influence on the Maven build itself. -->
 				<plugin>
