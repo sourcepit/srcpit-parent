@@ -15,7 +15,7 @@
 		<java.compiler.targetVersion>1.5</java.compiler.targetVersion>
 		<java.compiler.sourceVersion>1.5</java.compiler.sourceVersion>
 		<maven.version>3.0.3</maven.version>
-		<aspectj.version>1.6.11</aspectj.version>
+		<aspectj.version>1.6.12</aspectj.version>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
 		<srcpit.svn.url>http://svn.sourcepit.org</srcpit.svn.url>
@@ -129,6 +129,18 @@
 						<complianceLevel>${java.compiler.targetVersion}</complianceLevel>
 						<Xlint>ignore</Xlint>
 					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.aspectj</groupId>
+							<artifactId>aspectjtools</artifactId>
+							<version>${aspectj.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>org.aspectj</groupId>
+							<artifactId>aspectjrt</artifactId>
+							<version>${aspectj.version}</version>
+						</dependency>
+					</dependencies>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
