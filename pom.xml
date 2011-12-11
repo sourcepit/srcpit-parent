@@ -138,6 +138,7 @@
 						<target>${java.compiler.targetVersion}</target>
 						<complianceLevel>${java.compiler.targetVersion}</complianceLevel>
 						<Xlint>ignore</Xlint>
+						<outxmlfile>/META-INF/aop.xml</outxmlfile>
 					</configuration>
 					<dependencies>
 						<dependency>
