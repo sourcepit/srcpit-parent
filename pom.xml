@@ -14,7 +14,7 @@
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 		<java.compiler.targetVersion>1.5</java.compiler.targetVersion>
 		<java.compiler.sourceVersion>1.5</java.compiler.sourceVersion>
-		<maven.version>3.0.3</maven.version>
+		<maven.version>3.0.4</maven.version>
 		<aspectj.version>1.6.12</aspectj.version>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
