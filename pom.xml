@@ -32,7 +32,7 @@
 	</properties>
 
 	<scm>
-		<connection>scm:svn:http://svn.sourcepit.org/common/trunk/srcpit-parent</connection>
+		<connection>scm:git:git@github.com:sourcepit/srcpit-parent.git</connection>
 	</scm>
 
 	<organization>
