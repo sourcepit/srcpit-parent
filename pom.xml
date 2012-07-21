@@ -15,7 +15,7 @@
 		<java.compiler.sourceVersion>1.5</java.compiler.sourceVersion>
 		<maven.version>3.0.4</maven.version>
 		<aspectj.version>1.6.12</aspectj.version>
-		<test.memArgs>-Xms128m -Xmx192m</test.memArgs>
+		<test.memArgs>-Xms128m -Xmx256m -XX:MaxPermSize=192m</test.memArgs>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
 		<srcpit.svn.url>http://svn.sourcepit.org</srcpit.svn.url>
