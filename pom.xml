@@ -76,6 +76,17 @@
 		<dependencies>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
+				<artifactId>apache-maven</artifactId>
+				<version>${maven.version}</version>
+				<type>pom</type>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>apache-maven</artifactId>
+				<version>${maven.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
 				<artifactId>maven-core</artifactId>
 				<version>${maven.version}</version>
 			</dependency>
