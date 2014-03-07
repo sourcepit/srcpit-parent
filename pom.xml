@@ -15,6 +15,9 @@
 		<java.compiler.targetVersion>1.6</java.compiler.targetVersion>
 		<java.compiler.sourceVersion>1.6</java.compiler.sourceVersion>
 		<maven.version>3.1.1</maven.version>
+		<maven.plugin.version>3.2</maven.plugin.version>
+		<maven.installPlugin.version>2.5.1</maven.installPlugin.version>
+		<maven.resourcesPlugin.version>2.6</maven.resourcesPlugin.version>
 		<aspectj.version>1.7.4</aspectj.version>
 		<slf4j.version>1.7.6</slf4j.version>
 		<test.memArgs>-Xms128m -Xmx256m -XX:MaxPermSize=192m</test.memArgs>
@@ -39,7 +42,7 @@
 	</scm>
 
 	<organization>
-		<name>sourcepit.org</name>
+		<name>SourcePit.org</name>
 		<url>https://www.sourcepit.org/</url>
 	</organization>
 
@@ -76,6 +79,7 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- EMF + OSGi -->
 			<dependency>
 				<groupId>srcpit.org.eclipse.emf</groupId>
 				<artifactId>org.eclipse.emf.ecore</artifactId>
@@ -96,6 +100,8 @@
 				<artifactId>org.eclipse.osgi</artifactId>
 				<version>3.9.1-v20130814-1242</version>
 			</dependency>
+
+			<!-- Maven 3.x -->
 			<dependency>
 				<groupId>org.apache.maven</groupId>
 				<artifactId>apache-maven</artifactId>
@@ -109,7 +115,12 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
-				<artifactId>maven-core</artifactId>
+				<artifactId>maven-aether-provider</artifactId>
+				<version>${maven.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-artifact</artifactId>
 				<version>${maven.version}</version>
 			</dependency>
 			<dependency>
@@ -119,12 +130,12 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
-				<artifactId>maven-embedder</artifactId>
+				<artifactId>maven-core</artifactId>
 				<version>${maven.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
-				<artifactId>maven-plugin-api</artifactId>
+				<artifactId>maven-embedder</artifactId>
 				<version>${maven.version}</version>
 			</dependency>
 			<dependency>
@@ -139,28 +150,30 @@
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
-				<artifactId>maven-archiver</artifactId>
-				<version>2.5</version>
+				<artifactId>maven-plugin-api</artifactId>
+				<version>${maven.version}</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-repository-metadata</artifactId>
+				<version>${maven.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-settings</artifactId>
+				<version>${maven.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven</groupId>
+				<artifactId>maven-settings-builder</artifactId>
+				<version>${maven.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven.plugin-tools</groupId>
 				<artifactId>maven-plugin-annotations</artifactId>
-				<version>3.2</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.plexus</groupId>
-				<artifactId>plexus-utils</artifactId>
-				<version>3.0.17</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.plexus</groupId>
-				<artifactId>plexus-component-annotations</artifactId>
-				<version>1.5.5</version>
-			</dependency>
-			<dependency>
-				<groupId>org.codehaus.plexus</groupId>
-				<artifactId>plexus-classworlds</artifactId>
-				<version>2.5.1</version>
+				<version>${maven.plugin.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.sisu</groupId>
@@ -168,10 +181,10 @@
 				<version>0.2.0</version>
 			</dependency>
 			<dependency>
-                <groupId>org.eclipse.sisu</groupId>
-                <artifactId>org.eclipse.sisu.inject</artifactId>
-                <version>0.2.0</version>
-            </dependency>
+				<groupId>org.eclipse.sisu</groupId>
+				<artifactId>org.eclipse.sisu.inject</artifactId>
+				<version>0.2.0</version>
+			</dependency>
 			<dependency>
 				<groupId>org.sonatype.sisu</groupId>
 				<artifactId>sisu-guice</artifactId>
@@ -184,20 +197,87 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			<dependency>
-				<groupId>javax.inject</groupId>
-				<artifactId>javax.inject</artifactId>
-				<version>1</version>
-			</dependency>
+
+			<!-- Maven 2.x Components -->
 			<dependency>
 				<groupId>org.apache.maven.shared</groupId>
 				<artifactId>maven-filtering</artifactId>
 				<version>1.1</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.maven</groupId>
+						<artifactId>maven-project</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.codehaus.plexus</groupId>
+						<artifactId>plexus-container-default</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>${maven.installPlugin.version}</version>
+				<type>maven-plugin</type>
+				<exclusions>
+					<exclusion>
+						<artifactId>maven-artifact-manager</artifactId>
+						<groupId>org.apache.maven</groupId>
+					</exclusion>
+					<exclusion>
+						<artifactId>maven-project</artifactId>
+						<groupId>org.apache.maven</groupId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resourcesPlugin.version}</version>
+				<type>maven-plugin</type>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.maven.shared</groupId>
+						<artifactId>maven-filtering</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.codehaus.plexus</groupId>
+						<artifactId>plexus-container-default</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.maven</groupId>
+						<artifactId>maven-project</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.maven</groupId>
+						<artifactId>maven-monitor</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- Java -->
+			<dependency>
+				<groupId>javax.inject</groupId>
+				<artifactId>javax.inject</artifactId>
+				<version>1</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<!-- Utils -->
 			<dependency>
 				<groupId>net.sourceforge.collections</groupId>
 				<artifactId>collections-generic</artifactId>
 				<version>4.01</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-utils</artifactId>
+				<version>3.0.17</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.plexus</groupId>
+				<artifactId>plexus-interpolation</artifactId>
+				<version>1.19</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.guava</groupId>
@@ -225,49 +305,91 @@
 				<version>1.7</version>
 			</dependency>
 			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+
+			<!-- Logging -->
+			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${slf4j.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-simple</artifactId>
 				<version>${slf4j.version}</version>
+				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-nop</artifactId>
 				<version>${slf4j.version}</version>
+				<scope>provided</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjrt</artifactId>
-				<version>${aspectj.version}</version>
-			</dependency>
+
+			<!-- Testing -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.11</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
 				<version>1.9.5</version>
+				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
 				<version>1.9.5</version>
+				<scope>test</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+	<dependencies>
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<groupId>org.codehaus.plexus</groupId>
+					<artifactId>plexus-component-metadata</artifactId>
+					<version>1.5.5</version>
+				</plugin>
+				<plugin>
+					<artifactId>maven-plugin-plugin</artifactId>
+					<version>${maven.plugin.version}</version>
+					<configuration>
+						<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+					</configuration>
+					<executions>
+						<execution>
+							<id>mojo-descriptor</id>
+							<goals>
+								<goal>descriptor</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>help-goal</id>
+							<goals>
+								<goal>helpmojo</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.6</version>
+					<version>${maven.resourcesPlugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
@@ -283,7 +405,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
-					<version>2.5.1</version>
+					<version>${maven.installPlugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
@@ -333,7 +455,6 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-enforcer-plugin</artifactId>
 					<version>1.3.1</version>
 					<executions>
@@ -350,6 +471,15 @@
 									<requireJavaVersion>
 										<version>${java.compiler.targetVersion}</version>
 									</requireJavaVersion>
+									<bannedDependencies>
+										<excludes>
+											<exclude>org.apache.maven</exclude>
+											<excludes>org.codehaus.plexus:plexus-container-default</excludes>
+										</excludes>
+										<includes>
+											<include>org.apache.maven:*:[${maven.version},)</include>
+										</includes>
+									</bannedDependencies>
 								</rules>
 							</configuration>
 						</execution>
@@ -361,9 +491,9 @@
 					<version>1.4</version>
 				</plugin>
 				<plugin>
-					<groupId>org.codehaus.plexus</groupId>
-					<artifactId>plexus-component-metadata</artifactId>
-					<version>1.5.5</version>
+					<groupId>org.eclipse.sisu</groupId>
+					<artifactId>sisu-maven-plugin</artifactId>
+					<version>0.2.0</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -452,7 +582,7 @@
 									<pluginExecutionFilter>
 										<groupId>org.ops4j</groupId>
 										<artifactId>maven-inherit-plugin</artifactId>
-										<versionRange>[1.1,)</versionRange>
+										<versionRange>[1.5,)</versionRange>
 										<goals>
 											<goal>inherit</goal>
 										</goals>
