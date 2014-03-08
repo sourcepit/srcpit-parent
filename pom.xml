@@ -362,11 +362,6 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<groupId>org.codehaus.plexus</groupId>
-					<artifactId>plexus-component-metadata</artifactId>
-					<version>1.5.5</version>
-				</plugin>
-				<plugin>
 					<artifactId>maven-plugin-plugin</artifactId>
 					<version>${maven.plugin.version}</version>
 					<configuration>
