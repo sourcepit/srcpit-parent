@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.sourcepit</groupId>
 	<artifactId>srcpit-parent</artifactId>
@@ -19,6 +20,7 @@
 		<maven.resourcesPlugin.version>2.6</maven.resourcesPlugin.version>
 		<aspectj.version>1.7.4</aspectj.version>
 		<slf4j.version>1.7.6</slf4j.version>
+		<osgified-artifacts.qualifier>201406030912</osgified-artifacts.qualifier>
 		<test.memArgs>-Xms128m -Xmx256m -XX:MaxPermSize=192m</test.memArgs>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
@@ -123,9 +125,20 @@
 				<version>${maven.version}</version>
 			</dependency>
 			<dependency>
+				<groupId>srcpit.osgified</groupId>
+				<artifactId>org.apache.maven.artifact</artifactId>
+				<version>3.1.1-201406030912</version>
+			</dependency>
+			<dependency>
 				<groupId>org.apache.maven</groupId>
 				<artifactId>maven-compat</artifactId>
 				<version>${maven.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>javax.inject</groupId>
+						<artifactId>javax.inject</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
@@ -141,6 +154,11 @@
 				<groupId>org.apache.maven</groupId>
 				<artifactId>maven-model</artifactId>
 				<version>${maven.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>srcpit.osgified</groupId>
+				<artifactId>org.apache.maven.model</artifactId>
+				<version>${maven.version}-${osgified-artifacts.qualifier}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
@@ -178,11 +196,23 @@
 				<groupId>org.eclipse.sisu</groupId>
 				<artifactId>org.eclipse.sisu.plexus</artifactId>
 				<version>0.2.0</version>
+				<exclusions>
+					<exclusion>
+						<groupId>javax.inject</groupId>
+						<artifactId>javax.inject</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.sisu</groupId>
 				<artifactId>org.eclipse.sisu.inject</artifactId>
 				<version>0.2.0</version>
+				<exclusions>
+					<exclusion>
+						<groupId>javax.inject</groupId>
+						<artifactId>javax.inject</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.sonatype.sisu</groupId>
@@ -193,6 +223,10 @@
 					<exclusion>
 						<artifactId>aopalliance</artifactId>
 						<groupId>aopalliance</groupId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.inject</groupId>
+						<artifactId>javax.inject</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -256,9 +290,9 @@
 
 			<!-- Java -->
 			<dependency>
-				<groupId>javax.inject</groupId>
+				<groupId>srcpit.osgified</groupId>
 				<artifactId>javax.inject</artifactId>
-				<version>1</version>
+				<version>1.0.0-${osgified-artifacts.qualifier}</version>
 				<scope>provided</scope>
 			</dependency>
 
@@ -277,6 +311,11 @@
 				<groupId>org.codehaus.plexus</groupId>
 				<artifactId>plexus-interpolation</artifactId>
 				<version>1.19</version>
+			</dependency>
+			<dependency>
+				<groupId>srcpit.osgified</groupId>
+				<artifactId>org.codehaus.plexus.interpolation</artifactId>
+				<version>1.19.0-${osgified-artifacts.qualifier}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.guava</groupId>
@@ -304,9 +343,9 @@
 				<version>1.7</version>
 			</dependency>
 			<dependency>
-				<groupId>org.aspectj</groupId>
-				<artifactId>aspectjrt</artifactId>
-				<version>${aspectj.version}</version>
+				<groupId>srcpit.osgified</groupId>
+				<artifactId>org.aspectj.runtime</artifactId>
+				<version>${aspectj.version}-${osgified-artifacts.qualifier}</version>
 			</dependency>
 
 			<!-- Logging -->
@@ -352,7 +391,7 @@
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
-			<groupId>javax.inject</groupId>
+			<groupId>srcpit.osgified</groupId>
 			<artifactId>javax.inject</artifactId>
 		</dependency>
 	</dependencies>
@@ -468,7 +507,9 @@
 									<bannedDependencies>
 										<excludes>
 											<exclude>org.apache.maven</exclude>
-											<excludes>org.codehaus.plexus:plexus-container-default</excludes>
+											<exclude>org.codehaus.plexus:plexus-container-default</exclude>
+											<exclude>javax.inject:javax.inject</exclude>
+											<exclude>org.aspectj:aspectjrt</exclude>
 										</excludes>
 										<includes>
 											<include>org.apache.maven:*:[${maven.version},)</include>
