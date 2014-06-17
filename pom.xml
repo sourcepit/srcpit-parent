@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.sourcepit</groupId>
 	<artifactId>srcpit-parent</artifactId>
@@ -14,6 +15,7 @@
 		<java.compiler.targetVersion>1.6</java.compiler.targetVersion>
 		<java.compiler.sourceVersion>1.6</java.compiler.sourceVersion>
 		<maven.version>3.1.1</maven.version>
+		<aether.version>0.9.0.M2</aether.version>
 		<maven.plugin.version>3.2</maven.plugin.version>
 		<maven.installPlugin.version>2.5.1</maven.installPlugin.version>
 		<maven.resourcesPlugin.version>2.6</maven.resourcesPlugin.version>
@@ -190,6 +192,36 @@
 				<artifactId>maven-plugin-annotations</artifactId>
 				<version>${maven.plugin.version}</version>
 				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.aether</groupId>
+				<artifactId>aether-api</artifactId>
+				<version>${aether.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.aether</groupId>
+				<artifactId>aether-impl</artifactId>
+				<version>${aether.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.aether</groupId>
+				<artifactId>aether-util</artifactId>
+				<version>${aether.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.aether</groupId>
+				<artifactId>aether-spi</artifactId>
+				<version>${aether.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.aether</groupId>
+				<artifactId>aether-connector-wagon</artifactId>
+				<version>${aether.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.aether</groupId>
+				<artifactId>aether-test-util</artifactId>
+				<version>${aether.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.sisu</groupId>
