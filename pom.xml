@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.sourcepit</groupId>
 	<artifactId>srcpit-parent</artifactId>
@@ -35,6 +36,24 @@
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${user.dir}/target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${user.dir}/target/jacoco-its.exec</sonar.jacoco.itReportPath>
+		<osgifier.internalPackages>
+			**.internal.**,
+			**.internal
+		</osgifier.internalPackages>
+		<osgifier.recommendedImportPolicies>
+			org.sourcepit.**=equivalent,
+			org.apache.maven.**=equivalent,
+			javax.inject=any
+		</osgifier.recommendedImportPolicies>
+		<osgifier.requireBundle>
+			org.eclipse.emf.**,
+			org.apache.maven.**
+		</osgifier.requireBundle>
+		<osgifier.excludedExecutionEnvironments>
+			JavaSE/compact1-1.8,
+			JavaSE/compact2-1.8,
+			JavaSE/compact3-1.8
+		</osgifier.excludedExecutionEnvironments>
 	</properties>
 
 	<scm>
