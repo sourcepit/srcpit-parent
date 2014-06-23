@@ -145,7 +145,7 @@
 			<dependency>
 				<groupId>srcpit.osgified</groupId>
 				<artifactId>org.apache.maven.artifact</artifactId>
-				<version>3.1.1-201406030912</version>
+				<version>${maven.version}-${osgified-artifacts.qualifier}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
