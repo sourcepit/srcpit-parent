@@ -15,12 +15,11 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.sourcepit</groupId>
 	<artifactId>srcpit-parent</artifactId>
-	<version>17-SNAPSHOT</version>
+	<version>17</version>
 	<packaging>pom</packaging>
 
 	<name>Common Maven parent for projects hosted on sourcepit.org</name>
@@ -76,7 +75,7 @@
 
 	<scm>
 		<connection>scm:git:git@github.com:sourcepit/srcpit-parent.git</connection>
-		<tag>HEAD</tag>
+		<tag>srcpit-parent-17</tag>
 	</scm>
 
 	<organization>
