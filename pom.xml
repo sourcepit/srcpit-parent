@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-	Licensed to the Apache Software Foundation (ASF) under one or more
-	contributor license agreements. See the NOTICE file distributed with
-	this work for additional information regarding copyright ownership.
-	The ASF licenses this file to You under the Apache License, Version 2.0
-	(the "License"); you may not use this file except in compliance with
-	the License. You may obtain a copy of the License at
+	Copyright 2014 Bernd Vogt and others.
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
 
 	http://www.apache.org/licenses/LICENSE-2.0
 
@@ -15,7 +14,8 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.sourcepit</groupId>
 	<artifactId>srcpit-parent</artifactId>
@@ -510,7 +510,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>2.2.1</version>
+					<version>2.3</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
@@ -615,13 +615,9 @@
 					</dependencies>
 				</plugin>
 				<plugin>
-					<artifactId>maven-remote-resources-plugin</artifactId>
-					<version>1.4</version>
-				</plugin>
-				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>1.8</version>
+					<version>1.9.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
@@ -690,6 +686,19 @@
 										<ignore />
 									</action>
 								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-antrun-plugin</artifactId>
+										<versionRange>[1.7,)</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
@@ -710,7 +719,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 				<executions>
 					<execution>
@@ -719,7 +727,6 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
 				<executions>
 					<execution>
@@ -731,16 +738,28 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<artifactId>maven-remote-resources-plugin</artifactId>
+				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
 					<execution>
+						<phase>generate-resources</phase>
 						<goals>
-							<goal>process</goal>
+							<goal>run</goal>
 						</goals>
 						<configuration>
-							<resourceBundles>
-								<resourceBundle>org.apache:apache-jar-resource-bundle:1.4</resourceBundle>
-							</resourceBundles>
+							<target>
+								<copy todir="${basedir}/src/main/resources/META-INF">
+									<fileset dir="${user.dir}">
+										<include name="LICENSE" />
+										<include name="NOTICE" />
+									</fileset>
+								</copy>
+								<copy todir="${basedir}/src/test/resources/META-INF">
+									<fileset dir="${user.dir}">
+										<include name="LICENSE" />
+										<include name="NOTICE" />
+									</fileset>
+								</copy>
+							</target>
 						</configuration>
 					</execution>
 				</executions>
@@ -790,7 +809,6 @@
 				<pluginManagement>
 					<plugins>
 						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-surefire-plugin</artifactId>
 							<configuration>
 								<argLine>${sonar.jacoco.args} ${test.memArgs}</argLine>
@@ -800,7 +818,6 @@
 							</configuration>
 						</plugin>
 						<plugin>
-							<groupId>org.apache.maven.plugins</groupId>
 							<artifactId>maven-failsafe-plugin</artifactId>
 							<configuration>
 								<argLine>${sonar.jacoco.itArgs} ${test.memArgs}</argLine>
@@ -825,7 +842,6 @@
 			<build>
 				<plugins>
 					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-checkstyle-plugin</artifactId>
 						<executions>
 							<execution>
