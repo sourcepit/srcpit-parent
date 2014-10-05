@@ -843,12 +843,13 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-checkstyle-plugin</artifactId>
+						<version>2.12</version>
 						<executions>
 							<execution>
 								<id>checkstyle</id>
-								<phase>compile</phase>
+								<phase>verify</phase>
 								<goals>
-									<goal>checkstyle</goal>
+									<goal>check</goal>
 								</goals>
 							</execution>
 						</executions>
