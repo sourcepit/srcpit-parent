@@ -48,8 +48,6 @@
 		<srcpit.tomcat.url>http://tomcat.sourcepit.org</srcpit.tomcat.url>
 		<!-- sonar -->
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-		<sonar.phase>generate-sources</sonar.phase>
-		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>${user.dir}/target/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.jacoco.itReportPath>${user.dir}/target/jacoco-its.exec</sonar.jacoco.itReportPath>
 		<sonar.checkstyle.url>http://sonar.sourcepit.org/profiles/export?format=checkstyle&amp;language=java&amp;name=Sourcepit</sonar.checkstyle.url>
