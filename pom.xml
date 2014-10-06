@@ -854,6 +854,8 @@
 							</execution>
 						</executions>
 						<configuration>
+							<includeResources>false</includeResources>
+							<includeTestResources>false</includeTestResources>
 							<configLocation>${sonar.checkstyle.url}</configLocation>
 						</configuration>
 					</plugin>
