@@ -18,7 +18,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.sourcepit</groupId>
 	<artifactId>srcpit-parent</artifactId>
-	<version>19</version>
+	<version>20-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Common Maven parent for projects hosted on sourcepit.org</name>
@@ -72,7 +72,7 @@
 
 	<scm>
 		<connection>scm:git:git@github.com:sourcepit/srcpit-parent.git</connection>
-		<tag>srcpit-parent-19</tag>
+		<tag>HEAD</tag>
 	</scm>
 
 	<organization>
