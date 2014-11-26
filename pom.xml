@@ -34,6 +34,7 @@
 		<maven.plugin.version>3.3</maven.plugin.version>
 		<maven.installPlugin.version>2.5.2</maven.installPlugin.version>
 		<maven.resourcesPlugin.version>2.7</maven.resourcesPlugin.version>
+		<maven.releasePlugin.version>2.5.1</maven.releasePlugin.version>
 		<aspectj.version>1.8.4</aspectj.version>
 		<slf4j.version>1.7.7</slf4j.version>
 		<osgified-artifacts.qualifier>201411231959</osgified-artifacts.qualifier>
@@ -532,7 +533,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5.1</version>
+					<version>${maven.releasePlugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
