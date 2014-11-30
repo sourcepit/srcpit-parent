@@ -29,14 +29,15 @@
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 		<java.compiler.targetVersion>1.6</java.compiler.targetVersion>
 		<java.compiler.sourceVersion>1.6</java.compiler.sourceVersion>
-		<maven.version>3.1.1</maven.version>
-		<aether.version>0.9.0.M2</aether.version>
-		<maven.plugin.version>3.2</maven.plugin.version>
-		<maven.installPlugin.version>2.5.1</maven.installPlugin.version>
-		<maven.resourcesPlugin.version>2.6</maven.resourcesPlugin.version>
-		<aspectj.version>1.7.4</aspectj.version>
-		<slf4j.version>1.7.6</slf4j.version>
-		<osgified-artifacts.qualifier>201410071555</osgified-artifacts.qualifier>
+		<maven.version>3.2.3</maven.version>
+		<aether.version>0.9.1.v20140329</aether.version>
+		<maven.plugin.version>3.3</maven.plugin.version>
+		<maven.installPlugin.version>2.5.2</maven.installPlugin.version>
+		<maven.resourcesPlugin.version>2.7</maven.resourcesPlugin.version>
+		<maven.releasePlugin.version>2.5.1</maven.releasePlugin.version>
+		<aspectj.version>1.8.4</aspectj.version>
+		<slf4j.version>1.7.7</slf4j.version>
+		<osgified-artifacts.qualifier>201411231959</osgified-artifacts.qualifier>
 		<test.memArgs>-Xms128m -Xmx256m -XX:MaxPermSize=192m</test.memArgs>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
@@ -177,6 +178,20 @@
 				<groupId>org.apache.maven</groupId>
 				<artifactId>maven-core</artifactId>
 				<version>${maven.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.eclipse.sisu</groupId>
+						<artifactId>org.eclipse.sisu.plexus</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.codehaus.plexus</groupId>
+						<artifactId>plexus-classworlds</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.codehaus.plexus</groupId>
+						<artifactId>plexus-component-annotations</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
@@ -247,18 +262,33 @@
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.aether</groupId>
-				<artifactId>aether-connector-wagon</artifactId>
+				<artifactId>aether-test-util</artifactId>
 				<version>${aether.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.aether</groupId>
-				<artifactId>aether-test-util</artifactId>
+				<artifactId>aether-connector-basic</artifactId>
+				<version>${aether.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.aether</groupId>
+				<artifactId>aether-transport-http</artifactId>
+				<version>${aether.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.aether</groupId>
+				<artifactId>aether-transport-wagon</artifactId>
+				<version>${aether.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.aether</groupId>
+				<artifactId>aether-transport-file</artifactId>
 				<version>${aether.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.sisu</groupId>
 				<artifactId>org.eclipse.sisu.plexus</artifactId>
-				<version>0.2.0</version>
+				<version>0.2.1</version>
 				<exclusions>
 					<exclusion>
 						<groupId>javax.inject</groupId>
@@ -269,7 +299,7 @@
 			<dependency>
 				<groupId>org.eclipse.sisu</groupId>
 				<artifactId>org.eclipse.sisu.inject</artifactId>
-				<version>0.2.0</version>
+				<version>0.2.1</version>
 				<exclusions>
 					<exclusion>
 						<groupId>javax.inject</groupId>
@@ -281,7 +311,7 @@
 				<groupId>org.sonatype.sisu</groupId>
 				<artifactId>sisu-guice</artifactId>
 				<classifier>no_aop</classifier>
-				<version>3.1.10</version>
+				<version>3.2.4</version>
 				<exclusions>
 					<exclusion>
 						<artifactId>aopalliance</artifactId>
@@ -298,7 +328,7 @@
 			<dependency>
 				<groupId>org.apache.maven.shared</groupId>
 				<artifactId>maven-filtering</artifactId>
-				<version>1.2</version>
+				<version>1.3</version>
 				<exclusions>
 					<exclusion>
 						<groupId>org.apache.maven</groupId>
@@ -368,17 +398,17 @@
 			<dependency>
 				<groupId>org.codehaus.plexus</groupId>
 				<artifactId>plexus-utils</artifactId>
-				<version>3.0.17</version>
+				<version>3.0.21</version>
 			</dependency>
 			<dependency>
 				<groupId>org.codehaus.plexus</groupId>
 				<artifactId>plexus-interpolation</artifactId>
-				<version>1.19</version>
+				<version>1.22</version>
 			</dependency>
 			<dependency>
 				<groupId>srcpit.osgified</groupId>
 				<artifactId>org.codehaus.plexus.interpolation</artifactId>
-				<version>1.19.0-${osgified-artifacts.qualifier}</version>
+				<version>1.22.0-${osgified-artifacts.qualifier}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.guava</groupId>
@@ -398,12 +428,12 @@
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-exec</artifactId>
-				<version>1.2</version>
+				<version>1.3</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-compress</artifactId>
-				<version>1.7</version>
+				<version>1.9</version>
 			</dependency>
 			<dependency>
 				<groupId>srcpit.osgified</groupId>
@@ -441,13 +471,13 @@
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
-				<version>1.9.5</version>
+				<version>1.10.8</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
-				<version>1.9.5</version>
+				<version>1.10.8</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
@@ -483,15 +513,15 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>2.8</version>
+					<version>2.9</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.4</version>
+					<version>2.5</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.9.1</version>
+					<version>2.10.1</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
@@ -499,15 +529,15 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-deploy-plugin</artifactId>
-					<version>2.8.1</version>
+					<version>2.8.2</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-release-plugin</artifactId>
-					<version>2.5</version>
+					<version>${maven.releasePlugin.version}</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>2.3</version>
+					<version>2.4</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
@@ -520,7 +550,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
+					<version>3.2</version>
 					<configuration>
 						<source>${java.compiler.sourceVersion}</source>
 						<target>${java.compiler.targetVersion}</target>
@@ -528,7 +558,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.16</version>
+					<version>2.18</version>
 					<configuration>
 						<argLine>${test.memArgs}</argLine>
 						<includes>
@@ -539,7 +569,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>2.16</version>
+					<version>2.18</version>
 					<configuration>
 						<argLine>${test.memArgs}</argLine>
 					</configuration>
@@ -590,7 +620,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>aspectj-maven-plugin</artifactId>
-					<version>1.6</version>
+					<version>1.7</version>
 					<configuration>
 						<source>${java.compiler.sourceVersion}</source>
 						<target>${java.compiler.targetVersion}</target>
@@ -619,7 +649,7 @@
 				<plugin>
 					<groupId>org.jacoco</groupId>
 					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>0.5.4.201111111111</version>
+					<version>0.7.2.201409121644</version>
 				</plugin>
 				<!--This plugin's configuration is used to store Eclipse m2e settings
 					only. It has no influence on the Maven build itself. -->
