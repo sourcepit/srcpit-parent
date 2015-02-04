@@ -29,14 +29,14 @@
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 		<java.compiler.targetVersion>1.6</java.compiler.targetVersion>
 		<java.compiler.sourceVersion>1.6</java.compiler.sourceVersion>
-		<maven.version>3.2.3</maven.version>
+		<maven.version>3.2.5</maven.version>
 		<aether.version>0.9.1.v20140329</aether.version>
-		<maven.plugin.version>3.3</maven.plugin.version>
+		<maven.plugin.version>3.4</maven.plugin.version>
 		<maven.installPlugin.version>2.5.2</maven.installPlugin.version>
 		<maven.resourcesPlugin.version>2.7</maven.resourcesPlugin.version>
 		<maven.releasePlugin.version>2.5.1</maven.releasePlugin.version>
-		<aspectj.version>1.8.4</aspectj.version>
-		<slf4j.version>1.7.7</slf4j.version>
+		<aspectj.version>1.8.5</aspectj.version>
+		<slf4j.version>1.7.10</slf4j.version>
 		<osgified-artifacts.qualifier>201411231959</osgified-artifacts.qualifier>
 		<test.memArgs>-Xms128m -Xmx256m -XX:MaxPermSize=192m</test.memArgs>
 		<!-- srcpit urls -->
@@ -311,7 +311,7 @@
 				<groupId>org.sonatype.sisu</groupId>
 				<artifactId>sisu-guice</artifactId>
 				<classifier>no_aop</classifier>
-				<version>3.2.4</version>
+				<version>3.2.5</version>
 				<exclusions>
 					<exclusion>
 						<artifactId>aopalliance</artifactId>
@@ -465,19 +465,19 @@
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
-				<version>4.11</version>
+				<version>4.12</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-all</artifactId>
-				<version>1.10.8</version>
+				<version>1.10.19</version>
 				<scope>test</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.mockito</groupId>
 				<artifactId>mockito-core</artifactId>
-				<version>1.10.8</version>
+				<version>1.10.19</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
@@ -513,7 +513,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>2.9</version>
+					<version>2.10</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
@@ -544,7 +544,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
-					<version>1.7</version>
+					<version>1.8</version>
 				</plugin>
 				<plugin>
 					<groupId>org.ops4j</groupId>
@@ -561,7 +561,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.18</version>
+					<version>2.18.1</version>
 					<configuration>
 						<argLine>${test.memArgs}</argLine>
 						<includes>
@@ -572,14 +572,14 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>2.18</version>
+					<version>2.18.1</version>
 					<configuration>
 						<argLine>${test.memArgs}</argLine>
 					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.3.1</version>
+					<version>1.4</version>
 					<executions>
 						<execution>
 							<id>enforce-srcpit-versions</id>
@@ -873,7 +873,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-checkstyle-plugin</artifactId>
-						<version>2.12</version>
+						<version>2.13</version>
 						<executions>
 							<execution>
 								<id>checkstyle</id>
