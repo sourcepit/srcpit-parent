@@ -37,7 +37,7 @@
 		<maven.releasePlugin.version>2.5.1</maven.releasePlugin.version>
 		<aspectj.version>1.8.5</aspectj.version>
 		<slf4j.version>1.7.10</slf4j.version>
-		<osgified-artifacts.qualifier>201411231959</osgified-artifacts.qualifier>
+		<osgified-artifacts.qualifier>201502040759</osgified-artifacts.qualifier>
 		<test.memArgs>-Xms128m -Xmx256m -XX:MaxPermSize=192m</test.memArgs>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
