@@ -27,8 +27,8 @@
 		<!--maven settings -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-		<java.compiler.targetVersion>1.6</java.compiler.targetVersion>
-		<java.compiler.sourceVersion>1.6</java.compiler.sourceVersion>
+		<java.compiler.targetVersion>1.7</java.compiler.targetVersion>
+		<java.compiler.sourceVersion>1.7</java.compiler.sourceVersion>
 		<maven.version>3.2.5</maven.version>
 		<aether.version>0.9.1.v20140329</aether.version>
 		<maven.plugin.version>3.4</maven.plugin.version>
