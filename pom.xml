@@ -32,7 +32,7 @@
 		<java.compiler.sourceVersion>1.7</java.compiler.sourceVersion>
 		<maven.version>3.2.5</maven.version>
 		<aether.version>0.9.1.v20140329</aether.version>
-		<maven.plugin.version>3.4</maven.plugin.version>
+		<maven.plugin.version>3.3</maven.plugin.version>
 		<maven.installPlugin.version>2.5.2</maven.installPlugin.version>
 		<maven.resourcesPlugin.version>2.7</maven.resourcesPlugin.version>
 		<maven.releasePlugin.version>2.5.1</maven.releasePlugin.version>
