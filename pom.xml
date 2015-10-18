@@ -29,6 +29,8 @@
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
 		<java.compiler.targetVersion>1.7</java.compiler.targetVersion>
 		<java.compiler.sourceVersion>1.7</java.compiler.sourceVersion>
+		<maven.compiler.target>${java.compiler.targetVersion}</maven.compiler.target>
+		<maven.compiler.source>${java.compiler.sourceVersion}</maven.compiler.source>
 		<maven.version>3.2.5</maven.version>
 		<aether.version>0.9.1.v20140329</aether.version>
 		<maven.plugin.version>3.3</maven.plugin.version>
@@ -554,10 +556,6 @@
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.2</version>
-					<configuration>
-						<source>${java.compiler.sourceVersion}</source>
-						<target>${java.compiler.targetVersion}</target>
-					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
