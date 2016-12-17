@@ -40,7 +40,7 @@
 		<aspectj.version>1.8.5</aspectj.version>
 		<slf4j.version>1.7.10</slf4j.version>
 		<osgified-artifacts.qualifier>201612171922</osgified-artifacts.qualifier>
-		<test.memArgs>-Xms128m -Xmx256m</test.memArgs>
+		<test.memArgs>-Xms256m -Xmx512m</test.memArgs>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
 		<srcpit.svn.url>http://svn.sourcepit.org</srcpit.svn.url>
