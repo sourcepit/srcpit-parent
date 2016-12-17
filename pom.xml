@@ -31,15 +31,15 @@
 		<java.compiler.sourceVersion>1.7</java.compiler.sourceVersion>
 		<maven.compiler.target>${java.compiler.targetVersion}</maven.compiler.target>
 		<maven.compiler.source>${java.compiler.sourceVersion}</maven.compiler.source>
-		<maven.version>3.2.5</maven.version>
-		<aether.version>0.9.1.v20140329</aether.version>
+		<maven.version>3.3.9</maven.version>
+		<aether.version>1.0.2.v20150114</aether.version>
 		<maven.plugin.version>3.3</maven.plugin.version>
 		<maven.installPlugin.version>2.5.2</maven.installPlugin.version>
 		<maven.resourcesPlugin.version>2.7</maven.resourcesPlugin.version>
 		<maven.releasePlugin.version>2.5.1</maven.releasePlugin.version>
 		<aspectj.version>1.8.5</aspectj.version>
 		<slf4j.version>1.7.10</slf4j.version>
-		<osgified-artifacts.qualifier>201502040759</osgified-artifacts.qualifier>
+		<osgified-artifacts.qualifier>201612171922</osgified-artifacts.qualifier>
 		<test.memArgs>-Xms128m -Xmx256m -XX:MaxPermSize=192m</test.memArgs>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
@@ -174,6 +174,10 @@
 						<groupId>javax.inject</groupId>
 						<artifactId>javax.inject</artifactId>
 					</exclusion>
+					<exclusion>
+						<groupId>org.apache.maven</groupId>
+						<artifactId>maven-model</artifactId>
+					</exclusion>
 				</exclusions>
 			</dependency>
 			<dependency>
@@ -181,6 +185,10 @@
 				<artifactId>maven-core</artifactId>
 				<version>${maven.version}</version>
 				<exclusions>
+					<exclusion>
+						<groupId>org.apache.maven</groupId>
+						<artifactId>maven-model</artifactId>
+					</exclusion>
 					<exclusion>
 						<groupId>org.eclipse.sisu</groupId>
 						<artifactId>org.eclipse.sisu.plexus</artifactId>
@@ -192,6 +200,10 @@
 					<exclusion>
 						<groupId>org.codehaus.plexus</groupId>
 						<artifactId>plexus-component-annotations</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.inject</groupId>
+						<artifactId>javax.inject</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -290,7 +302,7 @@
 			<dependency>
 				<groupId>org.eclipse.sisu</groupId>
 				<artifactId>org.eclipse.sisu.plexus</artifactId>
-				<version>0.2.1</version>
+				<version>0.3.2</version>
 				<exclusions>
 					<exclusion>
 						<groupId>javax.inject</groupId>
@@ -301,7 +313,7 @@
 			<dependency>
 				<groupId>org.eclipse.sisu</groupId>
 				<artifactId>org.eclipse.sisu.inject</artifactId>
-				<version>0.2.1</version>
+				<version>0.3.2</version>
 				<exclusions>
 					<exclusion>
 						<groupId>javax.inject</groupId>
@@ -310,10 +322,10 @@
 				</exclusions>
 			</dependency>
 			<dependency>
-				<groupId>org.sonatype.sisu</groupId>
-				<artifactId>sisu-guice</artifactId>
+				<groupId>com.google.inject</groupId>
+				<artifactId>guice</artifactId>
+				<version>4.0</version>
 				<classifier>no_aop</classifier>
-				<version>3.2.5</version>
 				<exclusions>
 					<exclusion>
 						<artifactId>aopalliance</artifactId>
@@ -400,7 +412,7 @@
 			<dependency>
 				<groupId>org.codehaus.plexus</groupId>
 				<artifactId>plexus-utils</artifactId>
-				<version>3.0.21</version>
+				<version>3.0.22</version>
 			</dependency>
 			<dependency>
 				<groupId>org.codehaus.plexus</groupId>
@@ -415,7 +427,7 @@
 			<dependency>
 				<groupId>com.google.guava</groupId>
 				<artifactId>guava</artifactId>
-				<version>16.0.1</version>
+				<version>18.0</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-io</groupId>
