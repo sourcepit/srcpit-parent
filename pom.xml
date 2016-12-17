@@ -27,8 +27,8 @@
 		<!--maven settings -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>${project.build.sourceEncoding}</project.reporting.outputEncoding>
-		<java.compiler.targetVersion>1.7</java.compiler.targetVersion>
-		<java.compiler.sourceVersion>1.7</java.compiler.sourceVersion>
+		<java.compiler.targetVersion>1.8</java.compiler.targetVersion>
+		<java.compiler.sourceVersion>1.8</java.compiler.sourceVersion>
 		<maven.compiler.target>${java.compiler.targetVersion}</maven.compiler.target>
 		<maven.compiler.source>${java.compiler.sourceVersion}</maven.compiler.source>
 		<maven.version>3.3.9</maven.version>
@@ -36,11 +36,11 @@
 		<maven.plugin.version>3.3</maven.plugin.version>
 		<maven.installPlugin.version>2.5.2</maven.installPlugin.version>
 		<maven.resourcesPlugin.version>2.7</maven.resourcesPlugin.version>
-		<maven.releasePlugin.version>2.5.1</maven.releasePlugin.version>
+		<maven.releasePlugin.version>2.5.3</maven.releasePlugin.version>
 		<aspectj.version>1.8.5</aspectj.version>
 		<slf4j.version>1.7.10</slf4j.version>
 		<osgified-artifacts.qualifier>201612171922</osgified-artifacts.qualifier>
-		<test.memArgs>-Xms128m -Xmx256m -XX:MaxPermSize=192m</test.memArgs>
+		<test.memArgs>-Xms128m -Xmx256m</test.memArgs>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
 		<srcpit.svn.url>http://svn.sourcepit.org</srcpit.svn.url>
@@ -621,14 +621,9 @@
 					</executions>
 				</plugin>
 				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>sisu-maven-plugin</artifactId>
-					<version>1.4</version>
-				</plugin>
-				<plugin>
 					<groupId>org.eclipse.sisu</groupId>
 					<artifactId>sisu-maven-plugin</artifactId>
-					<version>0.2.0</version>
+					<version>0.3.3</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -688,9 +683,9 @@
 								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
-										<groupId>org.sonatype.plugins</groupId>
+										<groupId>org.eclipse.sisu</groupId>
 										<artifactId>sisu-maven-plugin</artifactId>
-										<versionRange>[1.1,)</versionRange>
+										<versionRange>[0.3.3,)</versionRange>
 										<goals>
 											<goal>main-index</goal>
 											<goal>test-index</goal>
@@ -747,7 +742,7 @@
 		</pluginManagement>
 		<plugins>
 			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
+				<groupId>org.eclipse.sisu</groupId>
 				<artifactId>sisu-maven-plugin</artifactId>
 				<executions>
 					<execution>
