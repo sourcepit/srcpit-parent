@@ -33,13 +33,13 @@
 		<maven.compiler.source>${java.compiler.sourceVersion}</maven.compiler.source>
 		<maven.version>3.3.9</maven.version>
 		<aether.version>1.0.2.v20150114</aether.version>
-		<maven.plugin.version>3.3</maven.plugin.version>
+		<maven.plugin.version>3.5</maven.plugin.version>
 		<maven.installPlugin.version>2.5.2</maven.installPlugin.version>
-		<maven.resourcesPlugin.version>2.7</maven.resourcesPlugin.version>
+		<maven.resourcesPlugin.version>3.0.2</maven.resourcesPlugin.version>
 		<maven.releasePlugin.version>2.5.3</maven.releasePlugin.version>
-		<aspectj.version>1.8.5</aspectj.version>
-		<slf4j.version>1.7.10</slf4j.version>
-		<osgified-artifacts.qualifier>201612171922</osgified-artifacts.qualifier>
+		<aspectj.version>1.8.10</aspectj.version>
+		<slf4j.version>1.7.22</slf4j.version>
+		<osgified-artifacts.qualifier>201612181614</osgified-artifacts.qualifier>
 		<test.memArgs>-Xms256m -Xmx512m</test.memArgs>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
@@ -231,7 +231,6 @@
 				<groupId>org.apache.maven</groupId>
 				<artifactId>maven-plugin-api</artifactId>
 				<version>${maven.version}</version>
-				<scope>provided</scope>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven</groupId>
@@ -342,17 +341,7 @@
 			<dependency>
 				<groupId>org.apache.maven.shared</groupId>
 				<artifactId>maven-filtering</artifactId>
-				<version>1.3</version>
-				<exclusions>
-					<exclusion>
-						<groupId>org.apache.maven</groupId>
-						<artifactId>maven-project</artifactId>
-					</exclusion>
-					<exclusion>
-						<groupId>org.codehaus.plexus</groupId>
-						<artifactId>plexus-container-default</artifactId>
-					</exclusion>
-				</exclusions>
+				<version>3.1.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -417,12 +406,7 @@
 			<dependency>
 				<groupId>org.codehaus.plexus</groupId>
 				<artifactId>plexus-interpolation</artifactId>
-				<version>1.22</version>
-			</dependency>
-			<dependency>
-				<groupId>srcpit.osgified</groupId>
-				<artifactId>org.codehaus.plexus.interpolation</artifactId>
-				<version>1.22.0-${osgified-artifacts.qualifier}</version>
+				<version>1.24</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.guava</groupId>
@@ -432,7 +416,7 @@
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
-				<version>2.4</version>
+				<version>2.5</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-lang</groupId>
@@ -447,7 +431,7 @@
 			<dependency>
 				<groupId>org.apache.commons</groupId>
 				<artifactId>commons-compress</artifactId>
-				<version>1.9</version>
+				<version>1.12</version>
 			</dependency>
 			<dependency>
 				<groupId>srcpit.osgified</groupId>
@@ -527,15 +511,15 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-dependency-plugin</artifactId>
-					<version>2.10</version>
+					<version>3.0.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.5</version>
+					<version>3.0.2</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.10.1</version>
+					<version>2.10.4</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-install-plugin</artifactId>
@@ -554,7 +538,7 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>2.4</version>
+					<version>3.0.1</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
@@ -563,15 +547,15 @@
 				<plugin>
 					<groupId>org.ops4j</groupId>
 					<artifactId>maven-inherit-plugin</artifactId>
-					<version>1.5</version>
+					<version>1.6.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.2</version>
+					<version>3.6.0</version>
 				</plugin>
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>2.18.1</version>
+					<version>2.19.1</version>
 					<configuration>
 						<argLine>${test.memArgs}</argLine>
 						<includes>
@@ -582,14 +566,14 @@
 				</plugin>
 				<plugin>
 					<artifactId>maven-failsafe-plugin</artifactId>
-					<version>2.18.1</version>
+					<version>2.19.1</version>
 					<configuration>
 						<argLine>${test.memArgs}</argLine>
 					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>1.3.1</version>
+					<version>1.4.1</version>
 					<executions>
 						<execution>
 							<id>enforce-srcpit-versions</id>
@@ -628,7 +612,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>aspectj-maven-plugin</artifactId>
-					<version>1.7</version>
+					<version>1.9</version>
 					<configuration>
 						<source>${java.compiler.sourceVersion}</source>
 						<target>${java.compiler.targetVersion}</target>
@@ -652,7 +636,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>1.9.1</version>
+					<version>1.12</version>
 				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
@@ -879,7 +863,7 @@
 				<plugins>
 					<plugin>
 						<artifactId>maven-checkstyle-plugin</artifactId>
-						<version>2.13</version>
+						<version>2.17</version>
 						<executions>
 							<execution>
 								<id>checkstyle</id>
