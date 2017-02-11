@@ -44,11 +44,11 @@
 		<maven.javadoc.skip>true</maven.javadoc.skip>
 		<!-- srcpit urls -->
 		<srcpit.redmine.url>https://www.sourcepit.org</srcpit.redmine.url>
-		<srcpit.svn.url>http://svn.sourcepit.org</srcpit.svn.url>
-		<srcpit.git.url>http://git.sourcepit.org</srcpit.git.url>
-		<srcpit.jenkins.url>http://jenkins.sourcepit.org</srcpit.jenkins.url>
-		<srcpit.nexus.url>http://nexus.sourcepit.org</srcpit.nexus.url>
-		<srcpit.tomcat.url>http://tomcat.sourcepit.org</srcpit.tomcat.url>
+		<srcpit.svn.url>https://svn.sourcepit.org</srcpit.svn.url>
+		<srcpit.git.url>https://git.sourcepit.org</srcpit.git.url>
+		<srcpit.jenkins.url>https://jenkins.sourcepit.org</srcpit.jenkins.url>
+		<srcpit.nexus.url>https://nexus.sourcepit.org</srcpit.nexus.url>
+		<srcpit.tomcat.url>https://tomcat.sourcepit.org</srcpit.tomcat.url>
 		<!-- sonar -->
 		<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 		<sonar.jacoco.reportPath>${user.dir}/target/jacoco.exec</sonar.jacoco.reportPath>
